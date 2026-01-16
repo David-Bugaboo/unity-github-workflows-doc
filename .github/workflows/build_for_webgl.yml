@@ -1,0 +1,84 @@
+# Nome do workflow que aparece na interface do GitHub Actions
+name: Build for WebGL
+
+# Variáveis de ambiente globais disponíveis para todos os jobs
+env:
+  # Identificadores do projeto Vercel para deploy
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+# Configuração de quando o workflow será executado
+# workflow_dispatch: permite execução manual através da interface do GitHub
+on: workflow_dispatch
+# on: [push, pull_request]  # Alternativa: executar automaticamente em push ou pull requests
+
+# Definição dos jobs (tarefas) do workflow
+jobs:
+  # Nome do job
+  buildForWebGL:
+    # Nome exibido na interface do GitHub Actions
+    name: Build for WebGL
+    # Sistema operacional onde o job será executado
+    runs-on: ubuntu-latest
+
+    # Lista de passos (steps) que serão executados sequencialmente
+    steps:
+      # Passo 1: Libera espaço em disco removendo arquivos desnecessários
+      - uses: jlumbroso/free-disk-space@v1.3.1
+
+      # Passo 2: Faz checkout do código do repositório
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Baixa todo o histórico do git (necessário para algumas funcionalidades)
+          lfs: true # Habilita suporte para Git LFS (Large File Storage)
+
+      # Passo 3: Configura cache da pasta Library do Unity para acelerar builds futuros
+      - uses: actions/cache@v3
+        with:
+          path: Library # Pasta que será cacheada
+          key: Library-WebGL # Chave única do cache para esta plataforma
+          restore-keys: Library-WebGL # Chave para restaurar cache parcial
+
+      # Passo 4: Compila o projeto Unity para WebGL
+      - uses: game-ci/unity-builder@v4
+        env:
+          # Credenciais do Unity para ativação da licença
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: WebGL # Plataforma de destino da build
+
+      # Passo 5: Instala a CLI do Vercel globalmente
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      # Passo 6: Baixa as configurações do ambiente de produção do Vercel
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      # Passo 7: Faz deploy da build WebGL para produção no Vercel
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prod --cwd build/WebGL/WebGL --token=${{ secrets.VERCEL_TOKEN }}
+
+      # Passo 8: Faz upload da build compilada para o bucket S3 da AWS
+      - name: Upload WebGL build to S3
+        env:
+          # Credenciais AWS para autenticação
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        run: |
+          # Define a data atual no formato YYYY-MM-DD
+          BUILD_DATE=$(date +%Y-%m-%d)
+          # Sincroniza os arquivos da build para o S3 na pasta builds/<data>-webglbuild
+          # --exact-timestamps: só atualiza arquivos se o timestamp for diferente
+          aws s3 sync build/WebGL/WebGL s3://${{ secrets.AWS_S3_BUCKET }}/builds/${BUILD_DATE}-webglbuild \
+            --exact-timestamps
+
+      # Passo 9: Faz upload da build como artefato do GitHub Actions (para download na interface)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Build-WebGL # Nome do artefato
+          path: build/WebGL/WebGL # Caminho dos arquivos a serem enviados

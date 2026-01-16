@@ -1,0 +1,124 @@
+# Nome do workflow que aparece na interface do GitHub Actions
+name: Build for iOS
+
+# Configuração de quando o workflow será executado
+# workflow_dispatch: permite execução manual através da interface do GitHub
+# IMPORTANTE: É recomendado manter APENAS no modo dispatch (execução manual)
+# devido aos rate limits agressivos da API da Apple. Evite usar triggers automáticos
+# como push ou pull_request para não exceder os limites da App Store Connect API.
+on: workflow_dispatch
+
+# Definição dos jobs (tarefas) do workflow
+jobs:
+  # Job 1: Compilação do projeto Unity para iOS
+  buildForIOS:
+    # Nome exibido na interface do GitHub Actions
+    name: Build for iOS
+    # Sistema operacional onde o job será executado
+    runs-on: ubuntu-latest
+
+    # Lista de passos (steps) que serão executados sequencialmente
+    steps:
+      # Passo 1: Libera espaço em disco removendo arquivos desnecessários
+      - uses: jlumbroso/free-disk-space@v1.3.1
+
+      # Passo 2: Faz checkout do código do repositório
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Baixa todo o histórico do git (necessário para algumas funcionalidades)
+          lfs: true # Habilita suporte para Git LFS (Large File Storage)
+
+      # Passo 3: Configura cache da pasta Library do Unity para acelerar builds futuros
+      - uses: actions/cache@v3
+        with:
+          path: Library # Pasta que será cacheada
+          key: Library-iOS # Chave única do cache para esta plataforma
+          restore-keys: Library- # Chave para restaurar cache parcial (qualquer Library-)
+
+      # Passo 4: Compila o projeto Unity para iOS
+      - uses: game-ci/unity-builder@v4
+        env:
+          # Credenciais do Unity para ativação da licença
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: iOS # Plataforma de destino da build
+
+      # Passo 5: Faz upload da build como artefato do GitHub Actions (para download na interface)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Build-iOS # Nome do artefato
+          path: build/iOS # Caminho dos arquivos a serem enviados
+
+  # Job 2: Publicação da build iOS na App Store
+  releaseToAppStore:
+    # Nome exibido na interface do GitHub Actions
+    name: Release to the App Store
+    # Sistema operacional onde o job será executado (macOS é necessário para Xcode)
+    runs-on: macos-latest
+    # Este job depende da conclusão do job buildForIOS
+    needs: buildForIOS
+
+    # Lista de passos (steps) que serão executados sequencialmente
+    steps:
+      # Passo 1: Faz checkout do código do repositório
+      - uses: actions/checkout@v4
+
+      # Passo 2: Baixa o artefato da build iOS gerado no job anterior
+      - name: Download iOS Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Build-iOS # Nome do artefato a ser baixado
+          path: build/iOS # Caminho onde o artefato será salvo
+
+      # Passo 3: Configura o Xcode com a versão especificada
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: "16.4" # Versão do Xcode a ser instalada
+
+      # Passo 4: Corrige permissões de arquivos e executa o fastlane para publicar na App Store
+      - name: Fix File Permissions and Run fastlane
+        env:
+          # Credenciais da conta Apple Developer
+          APPLE_CONNECT_EMAIL: ${{ secrets.APPLE_CONNECT_EMAIL }}
+          APPLE_DEVELOPER_EMAIL: ${{ secrets.APPLE_DEVELOPER_EMAIL }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+
+          # Credenciais do fastlane match (gerenciamento de certificados e perfis)
+          MATCH_REPOSITORY: ${{ secrets.MATCH_REPOSITORY }} # Repositório Git do match
+          MATCH_DEPLOY_KEY: ${{ secrets.MATCH_DEPLOY_KEY }} # Chave SSH para acessar o repositório
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }} # Senha para descriptografar os certificados
+
+          # Credenciais da App Store Connect API
+          APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+          APPSTORE_KEY_ID: ${{ secrets.APPSTORE_KEY_ID }}
+          APPSTORE_P8: ${{ secrets.APPSTORE_P8 }} # Chave privada da API
+
+          # Configurações do projeto iOS
+          IOS_BUILD_PATH: ${{ format('{0}/build/iOS', github.workspace) }} # Caminho completo da build
+          IOS_BUNDLE_ID: ${{ secrets.IOS_BUNDLE_ID }} # Bundle ID do aplicativo
+          PROJECT_NAME: ${{ secrets.IOS_PROJECT_NAME }} # Nome do projeto
+
+        run: |
+          # Inicia o agente SSH para autenticação com o repositório do match
+          eval "$(ssh-agent -s)"
+          ssh-add - <<< "${MATCH_DEPLOY_KEY}"
+          # Torna executáveis todos os scripts shell na pasta da build
+          find $IOS_BUILD_PATH -type f -name "**.sh" -exec chmod +x {} \;
+          # Torna executável a ferramenta usymtool (usada para símbolos de debug)
+          find $IOS_BUILD_PATH -type f -iname "usymtool*" -exec chmod +x {} \;
+          # Instala as dependências do Ruby (gemfile)
+          bundle install
+          # Executa o fastlane para publicar na App Store (beta)
+          bundle exec fastlane ios beta
+
+      # Passo 5: Limpa o artefato para evitar exceder o limite de armazenamento
+      # if: always() garante que a limpeza aconteça mesmo se o passo anterior falhar
+      - name: Cleanup to avoid storage limit
+        if: always()
+        uses: geekyeggo/delete-artifact@v2
+        with:
+          name: Build-iOS # Nome do artefato a ser deletado
+

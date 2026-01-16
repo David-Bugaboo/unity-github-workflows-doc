@@ -1,0 +1,47 @@
+# Nome do workflow que aparece na interface do GitHub Actions
+# Este workflow é executado apenas uma vez para configurar o ambiente CI/CD para iOS
+name: iOS One-Time Setup
+
+# Configuração de quando o workflow será executado
+# workflow_dispatch: permite execução manual através da interface do GitHub
+# IMPORTANTE: Este é um workflow de configuração única - execute apenas quando necessário
+on: workflow_dispatch
+
+# Definição dos jobs (tarefas) do workflow
+jobs:
+  # Nome do job
+  setup:
+    # Sistema operacional onde o job será executado
+    runs-on: ubuntu-latest
+
+    # Lista de passos (steps) que serão executados sequencialmente
+    steps:
+      # Passo 1: Faz checkout do código do repositório
+      - uses: actions/checkout@v4
+
+      # Passo 2: Configura o ambiente Ruby e instala as dependências
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2 # Versão do Ruby a ser instalada
+          bundler-cache: true # Habilita cache do bundler para acelerar instalações futuras
+
+      # Passo 3: Inicializa a configuração CI/CD para iOS usando fastlane
+      # Nota: O nome "Build iOS" é um pouco enganoso - este passo apenas inicializa a configuração
+      - name: Build iOS
+        shell: bash # Define o shell a ser usado
+        run: |
+          # Executa o fastlane para inicializar a configuração CI/CD
+          # Este comando configura o ambiente e prepara tudo para builds futuros
+          bundle exec fastlane ios init_ci
+        env:
+          # Credenciais da App Store Connect API
+          APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+          APPSTORE_KEY_ID: ${{ secrets.APPSTORE_KEY_ID }}
+          APPSTORE_P8: ${{ secrets.APPSTORE_P8 }} # Chave privada da API
+
+          # Credenciais do GitHub (para acesso ao repositório de certificados)
+          GH_PAT: ${{ secrets.GH_PAT }} # Personal Access Token do GitHub
+          GITHUB_REPOSITORY: ${{ env.GITHUB_REPOSITORY }} # Nome do repositório atual
+
+          # Credenciais do fastlane match (gerenciamento de certificados e perfis)
+          MATCH_REPOSITORY: ${{ secrets.MATCH_REPOSITORY }} # Repositório Git do match

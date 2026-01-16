@@ -1,0 +1,66 @@
+# Nome do workflow que aparece na interface do GitHub Actions
+name: Build for StandaloneWindows64
+
+# Configuração de quando o workflow será executado
+# workflow_dispatch: permite execução manual através da interface do GitHub
+on: workflow_dispatch
+# on: [push, pull_request]  # Alternativa: executar automaticamente em push ou pull requests
+
+# Definição dos jobs (tarefas) do workflow
+jobs:
+  # Nome do job
+  buildForStandaloneWindows64:
+    # Nome exibido na interface do GitHub Actions
+    name: Build for StandaloneWindows64
+    # Sistema operacional onde o job será executado
+    runs-on: ubuntu-latest
+
+    # Lista de passos (steps) que serão executados sequencialmente
+    steps:
+      # Passo 1: Libera espaço em disco removendo arquivos desnecessários
+      - uses: jlumbroso/free-disk-space@v1.3.1
+
+      # Passo 2: Faz checkout do código do repositório
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Baixa todo o histórico do git (necessário para algumas funcionalidades)
+          lfs: true # Habilita suporte para Git LFS (Large File Storage)
+
+      # Passo 3: Configura cache da pasta Library do Unity para acelerar builds futuros
+      - uses: actions/cache@v3
+        with:
+          path: Library # Pasta que será cacheada
+          key: Library-StandaloneWindows64 # Chave única do cache para esta plataforma
+          restore-keys: Library-StandaloneWindows64 # Chave para restaurar cache parcial
+
+      # Passo 4: Compila o projeto Unity para Windows 64-bit
+      - uses: game-ci/unity-builder@v4
+        env:
+          # Credenciais do Unity para ativação da licença
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: StandaloneWindows64 # Plataforma de destino da build
+
+      # Passo 5: Faz upload da build compilada para o bucket S3 da AWS
+      - name: Upload StandaloneWindows64 build to S3
+        env:
+          # Credenciais AWS para autenticação
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        run: |
+          # Define a data atual no formato YYYY-MM-DD
+          BUILD_DATE=$(date +%Y-%m-%d)
+          # Sincroniza os arquivos da build para o S3 na pasta builds/<data>-windowsbuild
+          # --exact-timestamps: só atualiza arquivos se o timestamp for diferente
+          aws s3 sync build/StandaloneWindows64/StandaloneWindows64 s3://${{ secrets.AWS_S3_BUCKET }}/builds/${BUILD_DATE}-windowsbuild \
+            --exact-timestamps
+
+      # Passo 6: Faz upload da build como artefato do GitHub Actions (para download na interface)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Build-StandaloneWindows64 # Nome do artefato
+          path: build/StandaloneWindows64/StandaloneWindows64 # Caminho dos arquivos a serem enviados

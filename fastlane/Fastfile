@@ -1,0 +1,144 @@
+# Fastfile para automação de builds e deploy iOS usando Fastlane
+#
+# Este arquivo contém as lanes para:
+# - Configuração inicial de CI/CD
+# - Sincronização de certificados de code signing
+# - Build de aplicativos Unity para iOS
+# - Upload para App Store e TestFlight
+#
+# Variáveis de Ambiente Necessárias:
+#   - GITHUB_REPOSITORY: Repositório GitHub no formato "org/repo"
+#   - MATCH_REPOSITORY: Repositório para certificados no formato "org/repo"
+#   - GH_PAT: Personal Access Token do GitHub
+#   - APPSTORE_KEY_ID: ID da chave da API do App Store Connect
+#   - APPSTORE_ISSUER_ID: ID do issuer da API do App Store Connect
+#   - APPSTORE_P8: Conteúdo da chave .p8 do App Store Connect
+#   - IOS_BUNDLE_ID: Bundle identifier do aplicativo iOS
+#   - IOS_BUILD_PATH: Caminho para o diretório de build do Unity
+#   - IOS_VERSION_NUMBER: Número da versão do aplicativo (opcional)
+
+org, repo = (ENV["GITHUB_REPOSITORY"]||"").split("/")
+match_org, match_repo = (ENV["MATCH_REPOSITORY"]||"").split("/")
+
+platform :ios do
+  # Configuração inicial do ambiente CI/CD
+  # Configura as chaves de deploy do GitHub Actions para permitir acesso
+  # ao repositório principal e ao repositório de certificados (match)
+  desc "Initialize CI/CD environment with GitHub Actions deploy keys"
+  lane :init_ci do
+    github_action(
+      api_token: ENV["GH_PAT"],
+      org: org,
+      repo: repo,
+      match_org: match_org,
+      match_repo: match_repo,
+      writable_deploy_key: true
+    )
+  end
+
+  # Sincroniza os certificados de code signing do repositório match
+  # Baixa e instala os certificados e perfis de provisionamento necessários
+  # para assinar o aplicativo para distribuição na App Store
+  desc "Sync codesigning certificates and provisioning profiles from match repository"
+  lane :sync_certificates do
+    # Configura a autenticação com App Store Connect API
+    app_store_connect_api_key(
+      key_id: ENV["APPSTORE_KEY_ID"],
+      issuer_id: ENV["APPSTORE_ISSUER_ID"],
+      key_content: ENV['APPSTORE_P8']
+    )
+
+    # Sincroniza certificados usando match (armazenamento em Git)
+    match(
+      type: "appstore",
+      storage_mode: "git",
+      git_url: "git@github.com:#{match_org}/#{match_repo}.git",
+      app_identifier: ENV["IOS_BUNDLE_ID"]
+    )
+  end
+
+  # Cria um build de release e faz upload para a App Store
+  # Este lane é usado para lançamentos oficiais na App Store
+  desc "Deliver a new Release build to the App Store"
+  lane :release do
+    build
+    upload_to_app_store
+  end
+
+  # Cria um build beta e faz upload para o TestFlight
+  # Configura o Info.plist para indicar que o app não usa criptografia não-exempta
+  # Nota: A conformidade de exportação também pode ser configurada através do Deliverfile
+  desc "Deliver a new Beta build to Apple TestFlight"
+  lane :beta do
+    # Missing Export Compliance can also be set through Deliverfile
+    # Configura o Info.plist para compliance de exportação
+    # Define que o app não usa criptografia não-exempta (requerido para TestFlight)
+    update_info_plist(
+      xcodeproj: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
+      plist_path: 'Info.plist',
+      block: proc do |plist|
+        plist['ITSAppUsesNonExemptEncryption'] = false
+      end
+    )
+    build
+    upload_to_testflight(skip_waiting_for_build_processing: true)
+  end
+  
+  # Lane principal para criar o arquivo .ipa do aplicativo
+  # Executa todas as etapas necessárias: configuração, versionamento,
+  # sincronização de certificados, configuração de code signing e build
+  desc "Create .ipa"
+  lane :build do
+    # Configura o ambiente CI (instala dependências, configura Xcode, etc.)
+    setup_ci
+      # Configura a autenticação com App Store Connect API
+      app_store_connect_api_key(
+        key_id: ENV["APPSTORE_KEY_ID"],
+        issuer_id: ENV["APPSTORE_ISSUER_ID"],
+        key_content: ENV['APPSTORE_P8']
+      )
+      xcodeproj_path = "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj"
+      # Atualiza o número da versão do app (se fornecido via variável de ambiente)
+      increment_version_number(
+        version_number: ENV["IOS_VERSION_NUMBER"],
+        xcodeproj: xcodeproj_path
+      )
+      # Obtém o último build number do TestFlight e incrementa
+      # Se houver erro ao obter, usa 0 como fallback
+      last_build = latest_testflight_build_number rescue 0
+      increment_build_number(
+        xcodeproj: xcodeproj_path,
+        build_number: last_build + 1
+      )
+      # Sincroniza certificados e perfis de provisionamento
+      sync_certificates
+      # Primeiro, habilita o signing automático (necessário para resetar configurações)
+      update_code_signing_settings(
+        use_automatic_signing: true,
+        path: xcodeproj_path
+      )
+      # Habilita novamente o signing automático (garantia de reset)
+      update_code_signing_settings(
+        use_automatic_signing: true,
+        path: xcodeproj_path
+      )
+      # Configura o code signing manual com os certificados do match
+      # Usa as variáveis de ambiente criadas pelo match (sigh_*)
+      update_code_signing_settings(
+        use_automatic_signing: false,
+        team_id: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}_appstore_team-id"],
+        code_sign_identity: 'iPhone Distribution',
+        targets: 'Unity-iPhone',
+        path: xcodeproj_path,
+        profile_name: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}_appstore_profile-name"],
+        profile_uuid: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}_appstore"]
+      )
+      # Compila o aplicativo e gera o arquivo .ipa
+      # -allowProvisioningUpdates permite atualizar perfis de provisionamento automaticamente
+      build_app(
+        project: xcodeproj_path,
+        scheme: 'Unity-iPhone',
+        xcargs: '-allowProvisioningUpdates'
+      )
+  end
+end

@@ -1,0 +1,33 @@
+# Appfile - Configuração de informações do aplicativo iOS para Fastlane
+#
+# Este arquivo define as configurações básicas do aplicativo iOS que são
+# compartilhadas entre todas as lanes do Fastfile. Ele centraliza informações
+# como bundle identifier, credenciais da Apple Developer e IDs de equipe.
+#
+# Variáveis de Ambiente Necessárias:
+#   - IOS_BUNDLE_ID: Bundle identifier do aplicativo (ex: com.empresa.app)
+#   - APPLE_DEVELOPER_EMAIL: Email da conta Apple Developer (para Apple Developer Portal)
+#   - APPLE_CONNECT_EMAIL: Email da conta App Store Connect (pode ser o mesmo do Developer)
+#   - APPLE_TEAM_ID: ID da equipe de desenvolvimento da Apple (Team ID)
+
+for_platform :ios do
+  # Define o bundle identifier do aplicativo iOS
+  # Este é o identificador único do app (ex: com.empresa.meuapp)
+  app_identifier(ENV['IOS_BUNDLE_ID'])
+
+  # Email usado para autenticação no Apple Developer Portal
+  # Usado para gerenciar certificados e perfis de provisionamento
+  apple_dev_portal_id(ENV['APPLE_DEVELOPER_EMAIL'])
+  
+  # Email usado para autenticação no App Store Connect (antigo iTunes Connect)
+  # Usado para gerenciar builds, versões e submissões na App Store
+  itunes_connect_id(ENV['APPLE_CONNECT_EMAIL'])
+
+  # ID da equipe de desenvolvimento da Apple
+  # Usado para identificar a equipe no Apple Developer Portal
+  team_id(ENV['APPLE_TEAM_ID'])
+  
+  # ID da equipe no App Store Connect
+  # Geralmente é o mesmo que team_id, mas pode ser diferente em organizações grandes
+  itc_team_id(ENV['APPLE_TEAM_ID'])
+end

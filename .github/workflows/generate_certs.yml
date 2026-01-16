@@ -1,0 +1,59 @@
+# Nome do workflow que aparece na interface do GitHub Actions
+name: Generate iOS Certs
+
+# Configuração de quando o workflow será executado
+on:
+  # Executa automaticamente quando o workflow "iOS One-Time Setup" for concluído
+  workflow_run:
+    workflows: ["iOS One-Time Setup"] # Nome do workflow que deve ser concluído
+    types:
+      - completed # Executa apenas quando o workflow é concluído (sucesso ou falha)
+  # Permite execução manual através da interface do GitHub
+  workflow_dispatch:
+
+# Definição dos jobs (tarefas) do workflow
+jobs:
+  # Nome do job
+  generate_certs:
+    # Sistema operacional onde o job será executado (macOS é necessário para ferramentas iOS)
+    runs-on: macos-latest
+
+    # Lista de passos (steps) que serão executados sequencialmente
+    steps:
+      # Passo 1: Faz checkout do código do repositório
+      - uses: actions/checkout@v4
+
+      # Passo 2: Configura o ambiente Ruby e instala as dependências
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2 # Versão do Ruby a ser instalada
+          bundler-cache: true # Habilita cache do bundler para acelerar instalações futuras
+
+      # Passo 3: Sincroniza certificados iOS usando fastlane match
+      # Nota: O nome "Build iOS" é um pouco enganoso - este passo apenas sincroniza certificados
+      - name: Build iOS
+        shell: bash # Define o shell a ser usado
+        run: |
+          # Inicia o agente SSH para autenticação com o repositório do match
+          eval "$(ssh-agent -s)"
+          # Adiciona a chave SSH para acesso ao repositório de certificados
+          ssh-add - <<< "${MATCH_DEPLOY_KEY}"
+          # Executa o fastlane para sincronizar certificados e perfis de provisionamento
+          bundle exec fastlane ios sync_certificates
+        env:
+          # Credenciais da App Store Connect API
+          APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+          APPSTORE_KEY_ID: ${{ secrets.APPSTORE_KEY_ID }}
+          APPSTORE_P8: ${{ secrets.APPSTORE_P8 }} # Chave privada da API
+
+          # Configurações do projeto iOS
+          IOS_BUNDLE_ID: ${{ secrets.IOS_BUNDLE_ID }} # Bundle ID do aplicativo
+
+          # Credenciais do GitHub (para acesso ao repositório de certificados)
+          GH_PAT: ${{ secrets.GH_PAT }} # Personal Access Token do GitHub
+          GITHUB_REPOSITORY: ${{ env.GITHUB_REPOSITORY }} # Nome do repositório atual
+
+          # Credenciais do fastlane match (gerenciamento de certificados e perfis)
+          MATCH_REPOSITORY: ${{ secrets.MATCH_REPOSITORY }} # Repositório Git do match
+          MATCH_DEPLOY_KEY: ${{ secrets.MATCH_DEPLOY_KEY }} # Chave SSH para acessar o repositório
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }} # Senha para descriptografar os certificados
