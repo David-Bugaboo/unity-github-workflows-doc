@@ -1,0 +1,12 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.0.61f1
+CRC: 4149404089
+HashAppended: 0
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: scenery
+      Dependencies: {}
+    Info_1:
+      Name: ardebugmenu
+      Dependencies: {}

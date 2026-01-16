@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5736b05115695347a3777a9b188a14b, type: 3}
+  m_Name: Main Settings
+  m_EditorClassIdentifier: 
+  currentGameMode: 2
+  PlayersToSpawn: 1
+  AreaOfInterestRadius: 32
+  AreaOfInterestCellSize: 32
+  AreaOfInterestGrid: {x: 1024, y: 1024, z: 1024}
+  ShowPlayerRadius: 1
+  ShowAreaOfInterestGrid: 1
+  ShowActiveServerZones: 0
+  ShowPlayerInterest: 0

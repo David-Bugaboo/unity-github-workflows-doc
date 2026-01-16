@@ -1,0 +1,8 @@
+using System;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "Bool Variable", menuName = "Bugaboo/Globals/Bool")]
+public class BoolVariable : GlobalVariable<bool>
+{
+
+}

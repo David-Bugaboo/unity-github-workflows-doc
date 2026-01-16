@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Core/Scenes/DownloadAsset.unity.meta
+guid: 3f9a5e7cfced28f409b914ee7a6c1642
+========
+guid: 924a815c4b6a377428d631188b9f2df4
+>>>>>>>> develop:Assets/PlayFabEditorExtensions/Editor/Resources/MostRecentPackage.unitypackage.meta
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

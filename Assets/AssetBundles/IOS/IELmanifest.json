@@ -1,0 +1,10 @@
+{
+    "version": "1.27",
+    "assetBundles": [
+        {
+            "name": "scenery",
+            "version": "1.27",
+            "url": "https://mundo-iel.s3.amazonaws.com/AssetBundles/IOS/2_0/scenery"
+        }
+    ]
+}

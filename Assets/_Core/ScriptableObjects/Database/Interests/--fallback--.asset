@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d1fef9b843aebb439c096576d805c6a, type: 3}
+  m_Name: --fallback--
+  m_EditorClassIdentifier: 
+  id: --fallback--
+  displayName: No Interest Found
+  sprite: {fileID: -5646243280596010024, guid: a1073b98ff5780c4f9227d2d116cc2c2, type: 3}

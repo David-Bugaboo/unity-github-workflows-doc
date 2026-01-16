@@ -1,0 +1,830 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &787895658531690132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 656975576641842750}
+  m_Layer: 5
+  m_Name: Sliding Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &656975576641842750
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787895658531690132}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 203020497876185109}
+  m_Father: {fileID: 442678048355210956}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: -20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1687990685834364140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3535578499526846057}
+  - component: {fileID: 2262701776301463551}
+  - component: {fileID: 1275198006390219927}
+  m_Layer: 5
+  m_Name: Content
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3535578499526846057
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687990685834364140}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 29645886590798433}
+  m_Father: {fileID: 6097339936998937587}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -0.00012207031}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &2262701776301463551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687990685834364140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
+--- !u!114 &1275198006390219927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687990685834364140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
+  m_ReverseArrangement: 0
+--- !u!1 &3325760133453902162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4713014936392847155}
+  - component: {fileID: 2753012722027054056}
+  - component: {fileID: 1789821484704229139}
+  m_Layer: 5
+  m_Name: TermsText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4713014936392847155
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325760133453902162}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7362276021435948170}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 40.665073}
+  m_SizeDelta: {x: -84.48001, y: -638.333}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2753012722027054056
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325760133453902162}
+  m_CullTransparentMesh: 1
+--- !u!114 &1789821484704229139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325760133453902162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 5267587390688662928, guid: d00a0eec6e9799b4f8c1590b3eff4c9c, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3437593826116604193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 203020497876185109}
+  - component: {fileID: 8474157057656470278}
+  - component: {fileID: 3083402279730955934}
+  m_Layer: 5
+  m_Name: Handle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &203020497876185109
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3437593826116604193}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 656975576641842750}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8474157057656470278
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3437593826116604193}
+  m_CullTransparentMesh: 1
+--- !u!114 &3083402279730955934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3437593826116604193}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3462235400549761241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6097339936998937587}
+  - component: {fileID: 5671740657630950642}
+  - component: {fileID: 2736057051209454980}
+  - component: {fileID: 2715054203118126063}
+  m_Layer: 5
+  m_Name: Viewport
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6097339936998937587
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3462235400549761241}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3535578499526846057}
+  m_Father: {fileID: 7362276021435948170}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5671740657630950642
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3462235400549761241}
+  m_CullTransparentMesh: 1
+--- !u!114 &2736057051209454980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3462235400549761241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2715054203118126063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3462235400549761241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 0
+--- !u!1 &6068816232947540945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 29645886590798433}
+  - component: {fileID: 5294688555770935192}
+  - component: {fileID: 5419812967744877429}
+  m_Layer: 5
+  m_Name: TermsConditions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &29645886590798433
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068816232947540945}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3535578499526846057}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5294688555770935192
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068816232947540945}
+  m_CullTransparentMesh: 1
+--- !u!114 &5419812967744877429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068816232947540945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "TERMOS DE USO DE DADOS PESSOAIS E POL\xCDTICA DE PRIVACIDADE \r\n\r\n
+    \r\n\r\nOl\xE1, obrigada por utilizar a aplica\xE7\xE3o Mundo IEL. \r\n \r\nO
+    Mundo IEL \xE9 uma plataforma digital interativa que serve como um ponto de encontro
+    virtual para oradores e participantes \r\n\r\n \r\n\r\nQuando voc\xEA utiliza
+    o Mundo IEL voc\xEA nos confia seus dados e suas informa\xE7\xF5es e n\xF3s nos
+    comprometemos a manter esses dados protegidos por meio de sistemas de prote\xE7\xE3o.
+    \r\n\r\nNesse sentido, esse documento de pol\xEDtica de privacidade explica de
+    maneira clara e acess\xEDvel como as suas informa\xE7\xF5es e o seus dados ser\xE3o
+    coletados, usados, compartilhados e armazenados pelos nossos sistemas. \r\n\r\nA
+    aceita\xE7\xE3o da nossa pol\xEDtica ser\xE1 feita quando voc\xEA acessar ou
+    utilizar o nosso website, formul\xE1rios e nossos demais servi\xE7os. Isso indicar\xE1
+    que voc\xEA est\xE1 ciente e de total acordo com como utilizaremos as suas informa\xE7\xF5es
+    e o seu dados. \r\n\r\nPara facilitar a sua compreens\xE3o, a presente pol\xEDtica
+    est\xE1 dividida da seguinte forma: \r\n\r\n \r\n\r\nQuais informa\xE7\xF5es
+    coletamos? \r\n\r\nComo utilizamos esses dados? \r\n\r\nExclus\xE3o de dados.
+    \r\n\r\nCompartilhamento de informa\xE7\xF5es. \r\n\r\nAtualiza\xE7\xE3o de pol\xEDtica
+    de privacidade e uso de dados pessoais. \r\n\r\nLei aplic\xE1vel. \r\n\r\n \r\n\r\nQuais
+    informa\xE7\xF5es coletamos? \r\n\r\n \r\n\r\nN\xF3s coletamos informa\xE7\xF5es
+    que voc\xEA nos fornece, como: \r\n\r\n \r\n\r\nDados pessoais: Ao se cadastrar
+    ou utilizar nosso aplicativo, voc\xEA pode fornecer informa\xE7\xF5es, incluindo,
+    mas n\xE3o se limitando aos dados abaixo, esse dados s\xE3o direcionados ao app
+    pelo canvas do IEL: \r\n\r\n \r\n\r\nCPF \r\n\r\nE-mail \r\n\r\nNome completo
+    \r\n\r\nFoto/logo (acesso \xE0 c\xE2mera pode ser necess\xE1rio, caso voc\xEA
+    opte por criar ou atualizar uma foto, ou avatar diretamente pelo app) \r\n\r\nLink
+    para redes sociais \r\n\r\nLocaliza\xE7\xE3o aproximada  \r\n\r\nObs: N\xE3o
+    \xE9 necess\xE1rio fornecer nenhum dado se o usuario acessar como visitante.
+    \r\n\r\nFuncionalidades e permiss\xF5es adicionais: \r\n\r\nC\xE2mera: Se autorizado,
+    o aplicativo pode acessar a c\xE2mera do dispositivo para permitir que voc\xEA
+    crie ou atualize seu avatar. (N\xE3o obrigat\xF3ria) \r\n\r\nMicrofone: O acesso
+    ao microfone \xE9 solicitado para possibilitar a transmiss\xE3o de \xE1udio durante
+    intera\xE7\xF5es no aplicativo. Importante ressaltar que n\xE3o gravamos \xE1udios
+    transmitidos. (N\xE3o obrigat\xF3ria) \nLocaliza\xE7\xE3o aproximada: Sua geolocaliza\xE7\xE3o
+    aproximada \xE9 coletada automaticamente para fins de analytics. \r\n\r\nCompartilhamento
+    de tela: O aplicativo oferece uma funcionalidade de compartilhamento de tela.
+    O usu\xE1rio \xE9 integralmente respons\xE1vel pelo conte\xFAdo compartilhado
+    por meio desta fun\xE7\xE3o. Embora transmitamos o conte\xFAdo da tela, n\xE3o
+    realizamos a grava\xE7\xE3o ou armazenamento do mesmo. (N\xE3o obrigat\xF3ria)
+    \r\n\r\n \r\n\r\nRessaltamos que n\xE3o coletamos dados pessoais sens\xEDveis
+    dos usu\xE1rios. \r\n\r\n \r\n\r\nTodas as informa\xE7\xF5es citadas s\xE3o ativamente
+    fornecidas pelo usu\xE1rio durante a utiliza\xE7\xE3o do nosso aplicativo e de
+    suas funcionalidades. \r\n\r\n \r\n\r\nComo utilizamos esses dados? \r\n\r\n
+    \r\n\r\nN\xF3s do IEL - Instituto Euvaldo Lodi N\xFAcleo do Cear\xE1, prezamos
+    muito pela sua privacidade. Por isso, todos os dados e informa\xE7\xF5es sobre
+    voc\xEA s\xE3o tratados como confidenciais. Utilizaremos as informa\xE7\xF5es
+    para os fins aqui descritos e autorizados por voc\xEA, visando sempre melhorar
+    a sua experi\xEAncia como usu\xE1rio. Por meio dessa pol\xEDtica, ficamos autorizados
+    a utilizar seus dados para: \r\n\r\n \r\n\r\nPermitir acesso a recursos e funcionalidades
+    do nosso app e site. \r\n\r\nEnviar mensagens alertando sobre notifica\xE7\xF5es
+    e atualiza\xE7\xF5es. \r\n\r\nComunicar sobre not\xEDcias, atualiza\xE7\xF5es,
+    eventos e oportunidades de seu interesse. \r\n\r\nCriar novos servi\xE7os e funcionalidades
+    baseados em seu perfil. \r\n\r\nEntender melhor seu comportamento e necessidades
+    para fins de an\xE1lise (analytics).  \r\n\r\n \r\n\r\nEventualmente, poderemos
+    utilizar seus dados para finalidades n\xE3o previstas nesta pol\xEDtica de privacidade,
+    mas que estejam alinhadas \xE0s suas leg\xEDtimas expectativas. O uso dos seus
+    dados para finalidades que n\xE3o atendam a essa prerrogativa s\xF3 ser\xE1 realizado
+    somente mediante sua pr\xE9via autoriza\xE7\xE3o. \r\n\r\n \r\n\r\nExclus\xE3o
+    de dados. \r\n\r\n \r\n\r\nTodos os dados coletados ser\xE3o exclu\xEDdos dos
+    nossos servidores quando voc\xEA assim requisitar, por procedimento gratuito
+    e facilitado, ou quando estes n\xE3o forem mais necess\xE1rios ou relevantes
+    para o Mundo IEL, salvo se houver qualquer outra raz\xE3o para sua manuten\xE7\xE3o,
+    como eventual obriga\xE7\xE3o legal de reten\xE7\xE3o de dados ou necessidade
+    de preserva\xE7\xE3o desses para resguardo de direitos do IEL. Mais informa\xE7\xF5es
+    podem ser encontradas no link: https://lgpd.sfiec.org.br/contato \r\n\r\n \r\n\r\nCompartilhamento
+    de informa\xE7\xF5es. \r\n\r\n \r\n\r\nO IEL pode compartilhar as informa\xE7\xF5es
+    que coleta, com empresas e institui\xE7\xF5es parceiras, provedores de servi\xE7os,
+    sempre que for poss\xEDvel e de forma an\xF4nima, visando preservar a sua privacidade.
+    Por meio deste documento, voc\xEA autoriza expressamente tais compartilhamentos.
+    \nO IEL se reserva ao direito de fornecer dados e informa\xE7\xF5es sobre voc\xEA,
+    incluindo suas intera\xE7\xF5es, caso seja requisitada judicialmente para tanto,
+    ato necess\xE1rio para que a empresa esteja conforme as leis nacionais, ou caso
+    voc\xEA autorize expressamente. \r\n\r\n \r\n\r\nTodos os seus dados s\xE3o confidenciais,
+    e somente as pessoas com as devidas autoriza\xE7\xF5es ter\xE3o acesso a eles.
+    Qualquer uso desses dados estar\xE1 de acordo com a presente pol\xEDtica. Nossa
+    empresa empreender\xE1 todos os esfor\xE7os razo\xE1veis de mercado para garantir
+    a seguran\xE7a dos nossos sistemas e dos seus dados. Nossos servidores s\xE3o
+    protegidos e controlados para garantir a seguran\xE7a e podem ser acessados somente
+    por pessoas previamente autorizadas. \r\n\r\n \r\n\r\nTodas as suas informa\xE7\xF5es,
+    ser\xE3o, sempre que poss\xEDvel, criptografadas, caso isso n\xE3o inviabilize
+    o seu uso pela plataforma. A qualquer momento, voc\xEA poder\xE1 requisitar c\xF3pias
+    dos seus dados armazenados em nosso sistema. Manteremos os dados e as informa\xE7\xF5es
+    somente at\xE9 quando estes forem necess\xE1rias ou relevantes para as finalidades
+    descritas nesta pol\xEDtica, ou em caso de per\xEDodos \r\n\r\npr\xE9-determinados
+    por lei, ou at\xE9 quando esses dados forem necess\xE1rios para a manuten\xE7\xE3o
+    de interesses leg\xEDtimos do mapeamento. \r\n\r\n \r\n\r\nTodavia, n\xE3o temos
+    como garantir completamente que todos os dados e informa\xE7\xF5es sobre voc\xEA
+    em nossa plataforma estar\xE3o livres de acessos n\xE3o autorizados, principalmente
+    caso haja compartilhamento indevido das credenciais. Portanto, voc\xEA \xE9 o
+    \xFAnico respons\xE1vel por fornecer um e-mail de contato seguro para recupera\xE7\xE3o
+    e por n\xE3o compartilhar esse com terceiros. Voc\xEA se compromete a notificar
+    imediatamente, por um canal seguro, sobre qualquer uso n\xE3o autorizado da sua
+    conta de e-mail, bem como acesso n\xE3o autorizado por terceiros a ela. \r\n\r\n
+    \r\n\r\n \r\n\r\nAtualiza\xE7\xE3o de pol\xEDtica de privacidade e uso de dados
+    pessoais \r\n\r\n \r\n\r\nO IEL se reserva o direito de alterar essa pol\xEDtica
+    quantas vezes forem necess\xE1rias, visando fornecer a voc\xEA mais seguran\xE7a
+    e conveni\xEAncia, melhorando cada vez mais a sua experi\xEAncia. \xC9 por isso
+    que \xE9 muito importante que voc\xEA acesse nossa pol\xEDtica periodicamente.
+    Para facilitar, indicamos no in\xEDcio do documento a data da \xFAltima atualiza\xE7\xE3o.
+    Caso sejam feitas altera\xE7\xF5es relevantes que ensejem novas autoriza\xE7\xF5es
+    suas, publicaremos uma nova pol\xEDtica de privacidade, sujeita novamente ao
+    seu consentimento. \r\n\r\n \r\n\r\nLei aplic\xE1vel \r\n\r\n \r\n\r\nEste documento
+    \xE9 regido e deve ser interpretado conforme as leis da Rep\xFAblica Federativa
+    do Brasil (Leis n\xBA 12.527/2011 \u201CLei de Acesso \xE0 Informa\xE7\xE3o\u201D,
+    12.965/2014 \u201CMarco Civil da internet\u201D e 13,709/2018 \u201CLGPD\u201D).
+    Fica eleito o foro da comarca de Fortaleza, Cear\xE1, como o competente para
+    resolver quaisquer quest\xF5es porventura oriundas do presente documento, com
+    expressa ren\xFAncia a qualquer outro, por mais privilegiado que seja. "
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 5abadea2c53cf7d42b8bbc45c8a0412c, type: 2}
+  m_sharedMaterial: {fileID: -8368351936389864009, guid: 5abadea2c53cf7d42b8bbc45c8a0412c, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 48
+  m_fontSizeBase: 48
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 8
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 10, y: 10, z: 10, w: 10}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &7157228132608443243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 442678048355210956}
+  - component: {fileID: 7645371698895686124}
+  - component: {fileID: 1696708787906303370}
+  - component: {fileID: 4514733514751306831}
+  m_Layer: 5
+  m_Name: Scrollbar Vertical
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &442678048355210956
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157228132608443243}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 656975576641842750}
+  m_Father: {fileID: 7362276021435948170}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: -17}
+  m_Pivot: {x: 1, y: 1}
+--- !u!222 &7645371698895686124
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157228132608443243}
+  m_CullTransparentMesh: 1
+--- !u!114 &1696708787906303370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157228132608443243}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4514733514751306831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157228132608443243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 3083402279730955934}
+  m_HandleRect: {fileID: 203020497876185109}
+  m_Direction: 2
+  m_Value: 1
+  m_Size: 0.06811703
+  m_NumberOfSteps: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &7455818630774479756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7362276021435948170}
+  - component: {fileID: 3984197530867115167}
+  - component: {fileID: 6578704172793268705}
+  - component: {fileID: 7951971949519513602}
+  m_Layer: 5
+  m_Name: Scroll View
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7362276021435948170
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7455818630774479756}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6097339936998937587}
+  - {fileID: 442678048355210956}
+  m_Father: {fileID: 4713014936392847155}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: -20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3984197530867115167
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7455818630774479756}
+  m_CullTransparentMesh: 1
+--- !u!114 &6578704172793268705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7455818630774479756}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7951971949519513602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7455818630774479756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Content: {fileID: 3535578499526846057}
+  m_Horizontal: 0
+  m_Vertical: 1
+  m_MovementType: 2
+  m_Elasticity: 0.1
+  m_Inertia: 1
+  m_DecelerationRate: 0.135
+  m_ScrollSensitivity: 1
+  m_Viewport: {fileID: 6097339936998937587}
+  m_HorizontalScrollbar: {fileID: 0}
+  m_VerticalScrollbar: {fileID: 4514733514751306831}
+  m_HorizontalScrollbarVisibility: 2
+  m_VerticalScrollbarVisibility: 2
+  m_HorizontalScrollbarSpacing: -3
+  m_VerticalScrollbarSpacing: -3
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []

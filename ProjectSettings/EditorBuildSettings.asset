@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Core/Scenes/DownloadAsset.unity
+    guid: 3f9a5e7cfced28f409b914ee7a6c1642
+  - enabled: 1
+    path: Assets/_Core/Scenes/Login.unity
+    guid: c1b2fba70c6031442af8c9bb61a5f341
+  - enabled: 1
+    path: Assets/_Core/Scenes/02_Lobby.unity
+    guid: 11c33a54b0ffcc14493510f54cdffdcf
+  - enabled: 1
+    path: Assets/_Core/Scenes/03_PalcoA.unity
+    guid: 9dc24c3da89c08e49b87bebac056af47
+  - enabled: 1
+    path: Assets/_Core/Scenes/04_PalcoB.unity
+    guid: 71e6a1e7263d37c44af894d8f159aee7
+  - enabled: 1
+    path: Assets/_Core/Scenes/05_PalcoC.unity
+    guid: 224b05d37eb76d24b8728481d11ff4f4
+  - enabled: 0
+    path: Assets/_Core/Scenes/06_ScreenShareScene.unity
+    guid: 54dd1071ce5da274db6e8c58a82318ad
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 1978ea0db3fdc294d955faa463bef052, type: 2}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: e8e759216da202c408dafa3bd1718e2b, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e163fb39e471dfb42a59cd5ee0a54f79, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 24f48d440284f00469c66df2509327b0, type: 2}
+  m_UseUCBPForAssetBundles: 0

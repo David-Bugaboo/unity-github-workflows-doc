@@ -1,0 +1,10 @@
+{
+    "version": "1.29",
+    "assetBundles": [
+        {
+            "name": "scenery",
+            "version": "1.29",
+            "url": "https://mundo-iel.s3.amazonaws.com/AssetBundles/Windows/2_0/scenery"
+        }
+    ]
+}

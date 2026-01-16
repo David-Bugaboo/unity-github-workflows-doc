@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e247163175e27244e9e3cb0eb1acfae1, type: 3}
+  m_Name: EventRemoval
+  m_EditorClassIdentifier: 
+  <Title>k__BackingField: "Falha ao remover usu\xE1rio"
+  <Message>k__BackingField: "Ops! Tivemos uma falha ao remover o usu\xE1rio do evento. "
+  <Code>k__BackingField: 500
+  <Icon>k__BackingField: {fileID: 21300000, guid: 982e73e7254c4c24cb92be26134ae0d3, type: 3}
