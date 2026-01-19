@@ -97,19 +97,19 @@ platform :ios do
         issuer_id: ENV["APPSTORE_ISSUER_ID"],
         key_content: ENV['APPSTORE_P8']
       )
-      # xcodeproj_path = "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj"
+      xcodeproj_path = "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj"
       # Atualiza o número da versão do app (se fornecido via variável de ambiente)
-      # increment_version_number(
-      #   version_number: ENV["IOS_VERSION_NUMBER"],
-      #   xcodeproj: xcodeproj_path
-      # )
+      increment_version_number(
+        version_number: ENV["IOS_VERSION_NUMBER"],
+        xcodeproj: xcodeproj_path
+      )
       # Obtém o último build number do TestFlight e incrementa
       # Se houver erro ao obter, usa 0 como fallback
-      # last_build = latest_testflight_build_number rescue 0
-      # increment_build_number(
-      #   xcodeproj: xcodeproj_path,
-      #   build_number: last_build + 1
-      # )
+      last_build = latest_testflight_build_number rescue 0
+      increment_build_number(
+        xcodeproj: xcodeproj_path,
+        build_number: last_build + 1
+      )
       # Sincroniza certificados e perfis de provisionamento
       sync_certificates
       # Primeiro, habilita o signing automático (necessário para resetar configurações)
